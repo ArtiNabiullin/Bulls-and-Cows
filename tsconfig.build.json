@@ -1,0 +1,12 @@
+{
+  "extends": "./tsconfig.json",
+  "compilerOptions": {
+    "rootDir": ".",
+    "outDir": "dist",
+    "declaration": false,
+    "declarationMap": false,
+    "sourceMap": false
+  },
+  "include": ["game-logic/**/*.ts", "src/**/*.ts"],
+  "exclude": ["tests", "node_modules", "dist"]
+}
