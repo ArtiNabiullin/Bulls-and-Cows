@@ -372,7 +372,20 @@ function renderGame(): void {
 
   updateTimer();
   timerInterval = window.setInterval(updateTimer, 1_000);
-  header.append(heading, timer);
+
+  const headerActions = createElement('div', undefined, 'game-header__actions');
+  const exitButton = createElement(
+    'button',
+    'Exit to menu',
+    'button button--secondary'
+  );
+  exitButton.type = 'button';
+  exitButton.addEventListener('click', () => {
+    currentGame = null;
+    renderSettings();
+  });
+  headerActions.append(timer, exitButton);
+  header.append(heading, headerActions);
 
   const card = createElement('section', undefined, 'card guess-card');
   const form = createElement('form', undefined, 'guess-form');
