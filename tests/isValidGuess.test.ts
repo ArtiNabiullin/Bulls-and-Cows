@@ -5,6 +5,9 @@ describe("isValidGuess", () => {
   it ("правильная длина и допустимые неповторяющиеся цифры", () => {
     expect(isValidGuess('1234', 4, 10)).toBe(true);
   });
+  it ("правильная длина и допустимые неповторяющиеся цифры", () => {
+    expect(isValidGuess('12aF', 4, 16)).toBe(true);
+  });
   it ("длина не совпадает", () => {
     expect(isValidGuess('123', 4, 8)).toBe(false);
   });
