@@ -1,13 +1,13 @@
-import { describe, it, expect } from "vitest";
-import { generateSecret } from "../game-logic/generateSecret.js"; 
+import { describe, it, expect } from 'vitest';
+import { generateSecret } from '../game-logic/generateSecret.js';
 
-describe("generateSecret", () => {
-  it("результат нужной длины", () => {
+describe('generateSecret', () => {
+  it('результат нужной длины', () => {
     const secret = generateSecret(4, 10) as string;
     expect(secret).toHaveLength(4);
   });
 
-  it("все цифры допустимы и уникальны", () => {
+  it('все цифры допустимы и уникальны', () => {
     const length = 5;
     const base = 10;
     const secret = generateSecret(length, base) as string;
@@ -22,9 +22,9 @@ describe("generateSecret", () => {
     }
   });
 
-  it("одинаковый детерминированный источник случайности даёт повторяемый результат", () => {
+  it('одинаковый детерминированный источник случайности даёт повторяемый результат', () => {
     const createPredictableRandom = (): (() => number) => {
-      let values = [0.1, 0.4, 0.2, 0.8];
+      const values = [0.1, 0.4, 0.2, 0.8];
       let index = 0;
       return () => values[index++] || 0;
     };
@@ -35,15 +35,15 @@ describe("generateSecret", () => {
     expect(secret1).toBe(secret2);
   });
 
-  it("важно проверить, что секрет может начинаться с нуля", () => {
+  it('важно проверить, что секрет может начинаться с нуля', () => {
     const createLeadingZeroRandom = (): (() => number) => {
-      let values = [0.01, 0.2, 0.5, 0.9];
+      const values = [0.01, 0.2, 0.5, 0.9];
       let index = 0;
       return () => values[index++] || 0;
     };
 
     const secret = generateSecret(4, 10, createLeadingZeroRandom()) as string;
-    
+
     expect(secret.startsWith('0')).toBe(true);
   });
 });
