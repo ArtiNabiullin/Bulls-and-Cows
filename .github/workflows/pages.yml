@@ -45,7 +45,7 @@ jobs:
       - name: Prepare the site artifact
         run: |
           mkdir -p site
-          cp index.html styles.css site/
+          cp favicon.svg index.html styles.css site/
           cp -R dist site/dist
 
       - name: Upload the site artifact
